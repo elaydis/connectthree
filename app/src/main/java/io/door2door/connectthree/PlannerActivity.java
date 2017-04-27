@@ -1,5 +1,7 @@
 package io.door2door.connectthree;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,6 +27,8 @@ public class PlannerActivity extends FragmentActivity implements OnMapReadyCallb
   @BindView(R.id.historyList)
   RecyclerView historyList;
 
+  Context context;
+
   private View.OnClickListener onClickListener = new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -35,6 +39,8 @@ public class PlannerActivity extends FragmentActivity implements OnMapReadyCallb
     @Override
     public void onSuggestionClick(String suggestionAddress) {
       destinationEditText.setText(suggestionAddress);
+      Intent intent = new Intent(context, ResultsActivity.class);
+      startActivity(intent);
     }
   };
   private View.OnFocusChangeListener focusChangeListener = new View.OnFocusChangeListener() {
@@ -57,6 +63,7 @@ public class PlannerActivity extends FragmentActivity implements OnMapReadyCallb
         (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
     mapFragment.getMapAsync(this);
 
+    context = this;
     setUpViews();
   }
 

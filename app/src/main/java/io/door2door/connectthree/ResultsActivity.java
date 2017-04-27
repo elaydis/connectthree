@@ -9,7 +9,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
@@ -21,8 +20,12 @@ import java.util.Arrays;
 public class ResultsActivity extends FragmentActivity implements OnMapReadyCallback {
 
   private GoogleMap mMap;
-  private ArrayList<LatLng> coordsStart = new ArrayList<>(Arrays.asList(new LatLng(52.5298727, 13.4028925), new LatLng(52.5200, 13.4050), new LatLng(52.5298727, 13.4028925)));
-  private ArrayList<LatLng> coordsEnd = new ArrayList<>(Arrays.asList(new LatLng(52.523297, 13.4200692), new LatLng(51.5074, 0.1278), new LatLng(52.523297, 13.4200692)));
+  private ArrayList<LatLng> coordsStart = new ArrayList<>(
+      Arrays.asList(new LatLng(52.5298727, 13.4028925), new LatLng(52.5200, 13.4050),
+          new LatLng(52.5298727, 13.4028925)));
+  private ArrayList<LatLng> coordsEnd = new ArrayList<>(
+      Arrays.asList(new LatLng(52.523297, 13.4200692), new LatLng(51.5074, 0.1278),
+          new LatLng(52.523297, 13.4200692)));
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +50,14 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
           @Override
           public void onCurrentItemChanged(@NonNull RecyclerView.ViewHolder viewHolder,
               int adapterPosition) {
-            mMap.clear();
+            if (mMap != null) {
+              mMap.clear();
 
-            PolylineOptions options = new PolylineOptions();
-            options.add(coordsStart.toArray(new LatLng[coordsStart.size()])[adapterPosition]);
-            options.add(coordsEnd.toArray(new LatLng[coordsEnd.size()])[adapterPosition]);
-            mMap.addPolyline(options);
+              PolylineOptions options = new PolylineOptions();
+              options.add(coordsStart.toArray(new LatLng[coordsStart.size()])[adapterPosition]);
+              options.add(coordsEnd.toArray(new LatLng[coordsEnd.size()])[adapterPosition]);
+              mMap.addPolyline(options);
+            }
           }
         });
   }
