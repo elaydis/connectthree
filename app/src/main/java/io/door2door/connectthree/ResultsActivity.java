@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
+import android.widget.EditText;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -18,6 +19,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ResultsActivity extends FragmentActivity implements OnMapReadyCallback {
+
+  public static final String SUGGESTION_ADDRESS = "suggestion_address";
+  private String suggestionAddress;
 
   private GoogleMap mMap;
   private ArrayList<LatLng> coordsStart = new ArrayList<>(
@@ -60,6 +64,9 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
             }
           }
         });
+
+    EditText editText = (EditText) findViewById(R.id.destinationEditText);
+    editText.setText(getIntent().getExtras().getString(SUGGESTION_ADDRESS));
   }
 
   @Override

@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true"
     >
 
   <fragment
@@ -14,6 +16,20 @@
       app:layout_heightPercent="80%"
       tools:context="io.door2door.connectthree.PlannerActivity"
       />
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/primaryBackground"
+      android:padding="16dp"
+      >
+    <EditText
+        android:id="@+id/destinationEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/destination"
+        />
+  </LinearLayout>
 
   <com.yarolegovich.discretescrollview.DiscreteScrollView
       android:id="@+id/picker"
