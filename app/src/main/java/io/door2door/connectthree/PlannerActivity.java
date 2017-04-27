@@ -38,8 +38,7 @@ public class PlannerActivity extends FragmentActivity implements OnMapReadyCallb
 
     // Add a marker in Sydney and move the camera
     LatLng door2door = new LatLng(52.5298727, 13.4028925);
-    mMap.addMarker(new MarkerOptions().position(door2door).title("Marker in Sydney"));
-    mMap.moveCamera(CameraUpdateFactory.newLatLng(door2door));
-
+    mMap.addMarker(new MarkerOptions().position(door2door).title("door2door HQ"));
+    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(door2door, 15));
   }
 }
