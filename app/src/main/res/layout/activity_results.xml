@@ -1,9 +1,25 @@
-<fragment
+<android.support.percent.PercentRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="io.door2door.connectthree.PlannerActivity"
-    />
+    >
+
+  <fragment
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:id="@+id/map"
+      android:name="com.google.android.gms.maps.SupportMapFragment"
+      android:layout_width="match_parent"
+      app:layout_heightPercent="80%"
+      tools:context="io.door2door.connectthree.PlannerActivity"
+      />
+
+  <com.yarolegovich.discretescrollview.DiscreteScrollView
+      android:id="@+id/picker"
+      android:layout_width="match_parent"
+      android:layout_alignParentBottom="true"
+      android:background="#f3f4f5"
+      app:layout_heightPercent="20%"
+      />
+</android.support.percent.PercentRelativeLayout>
