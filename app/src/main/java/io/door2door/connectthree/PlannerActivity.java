@@ -40,6 +40,7 @@ public class PlannerActivity extends FragmentActivity implements OnMapReadyCallb
     public void onSuggestionClick(String suggestionAddress) {
       destinationEditText.setText(suggestionAddress);
       Intent intent = new Intent(context, ResultsActivity.class);
+      intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
       intent.putExtra(ResultsActivity.SUGGESTION_ADDRESS, suggestionAddress);
       startActivity(intent);
     }
