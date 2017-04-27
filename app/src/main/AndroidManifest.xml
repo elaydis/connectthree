@@ -23,8 +23,7 @@
         android:value="@string/google_maps_key"/>
 
     <activity
-        android:name=".ResultsActivity"
-        android:label="@string/title_activity_planner">
+        android:name=".PlannerActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 

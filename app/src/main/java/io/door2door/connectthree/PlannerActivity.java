@@ -2,39 +2,81 @@ package io.door2door.connectthree;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.EditText;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 public class PlannerActivity extends FragmentActivity implements OnMapReadyCallback {
 
-  private GoogleMap mMap;
+  @BindView(R.id.slidingLayout)
+  SlidingUpPanelLayout slidingUpPanelLayout;
+  @BindView(R.id.destinationEditText)
+  EditText destinationEditText;
+  @BindView(R.id.historyList)
+  RecyclerView historyList;
+
+  private View.OnClickListener onClickListener = new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+      slidingUpPanelLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+    }
+  };
+  private SuggestionClickListener clickListener = new SuggestionClickListener() {
+    @Override
+    public void onSuggestionClick(String suggestionAddress) {
+      destinationEditText.setText(suggestionAddress);
+    }
+  };
+  private View.OnFocusChangeListener focusChangeListener = new View.OnFocusChangeListener() {
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+      if (hasFocus) {
+        slidingUpPanelLayout.setPanelState(SlidingUpPanelLayout.PanelState.EXPANDED);
+      } else {
+        slidingUpPanelLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+      }
+    }
+  };
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_planner);
-    // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+    ButterKnife.bind(this);
     SupportMapFragment mapFragment =
         (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
     mapFragment.getMapAsync(this);
+
+    setUpViews();
   }
 
-  /**
-   * Manipulates the map once available.
-   * This callback is triggered when the map is ready to be used.
-   * This is where we can add markers or lines, add listeners or move the camera. In this case,
-   * we just add a marker near Sydney, Australia.
-   * If Google Play services is not installed on the device, the user will be prompted to install
-   * it inside the SupportMapFragment. This method will only be triggered once the user has
-   * installed Google Play services and returned to the app.
-   */
+  private void setUpViews() {
+    destinationEditText.setOnClickListener(onClickListener);
+    destinationEditText.setOnFocusChangeListener(focusChangeListener);
+    historyList.setLayoutManager(
+        new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+    historyList.setAdapter(new HistoryAdapter(clickListener));
+  }
+
+  @Override
+  public void onBackPressed() {
+    slidingUpPanelLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+    //super.onBackPressed();
+  }
+
   @Override
   public void onMapReady(GoogleMap googleMap) {
-    mMap = googleMap;
+    GoogleMap mMap = googleMap;
 
     // Add a marker in Sydney and move the camera
     LatLng door2door = new LatLng(52.5298727, 13.4028925);
