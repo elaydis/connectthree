@@ -1,43 +1,62 @@
-<android.support.percent.PercentRelativeLayout
+<com.sothree.slidinguppanel.SlidingUpPanelLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:descendantFocusability="beforeDescendants"
-    android:focusableInTouchMode="true"
+    android:gravity="bottom"
+    sothree:umanoPanelHeight="96dp"
+    sothree:umanoShadowHeight="4dp"
     >
 
-  <fragment
-      xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:tools="http://schemas.android.com/tools"
-      android:id="@+id/map"
-      android:name="com.google.android.gms.maps.SupportMapFragment"
+
+  <RelativeLayout
       android:layout_width="match_parent"
-      app:layout_heightPercent="80%"
-      tools:context="io.door2door.connectthree.PlannerActivity"
-      />
+      android:layout_height="match_parent"
+      >
+
+    <fragment
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="io.door2door.connectthree.PlannerActivity"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/primaryBackground"
+        android:padding="16dp"
+        >
+      <EditText
+          android:id="@+id/destinationEditText"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="8dp"
+          android:layout_marginTop="8dp"
+          android:hint="@string/destination"
+          />
+    </LinearLayout>
+
+  </RelativeLayout>
 
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:background="@color/primaryBackground"
-      android:padding="16dp"
+      android:orientation="horizontal"
+      android:padding="30dp"
       >
-    <EditText
-        android:id="@+id/destinationEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:hint="@string/destination"
-        />
-  </LinearLayout>
 
   <com.yarolegovich.discretescrollview.DiscreteScrollView
       android:id="@+id/picker"
       android:layout_width="match_parent"
+      android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
       android:background="#f3f4f5"
-      app:layout_heightPercent="20%"
       />
-</android.support.percent.PercentRelativeLayout>
+
+  </LinearLayout>
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>

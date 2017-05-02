@@ -1,10 +1,13 @@
 package io.door2door.connectthree;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.widget.EditText;
+import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -13,8 +16,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
-import com.yarolegovich.discretescrollview.transform.Pivot;
-import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -31,6 +32,23 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
       Arrays.asList(new LatLng(52.523297, 13.4200692), new LatLng(51.5074, 0.1278),
           new LatLng(52.523297, 13.4200692)));
 
+  private BookButtonClickListener bookButtonClickListener = new BookButtonClickListener() {
+    @Override
+    public void onBookButtonClick() {
+      AlertDialog alertDialog =
+          new AlertDialog.Builder(ResultsActivity.this).setTitle("Pick number of seats")
+              .setMessage("2 seats")
+              .setPositiveButton("BOOK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                  Toast.makeText(ResultsActivity.this, "BOOKING", Toast.LENGTH_SHORT).show();
+                }
+              })
+              .create();
+      alertDialog.show();
+    }
+  };
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -42,13 +60,13 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
     mapFragment.getMapAsync(this);
 
     DiscreteScrollView scrollView = (DiscreteScrollView) findViewById(R.id.picker);
-    scrollView.setAdapter(new ResultsActivityAdapter());
+    scrollView.setAdapter(new ResultsActivityAdapter(bookButtonClickListener));
     scrollView.setOffscreenItems(1);
-    scrollView.setItemTransformer(new ScaleTransformer.Builder().setMaxScale(1.05f)
-        .setMinScale(0.8f)
-        .setPivotX(Pivot.X.CENTER)
-        .setPivotY(Pivot.Y.BOTTOM)
-        .build());
+    //scrollView.setItemTransformer(new ScaleTransformer.Builder().setMaxScale(1.05f)
+    //    .setMinScale(0.8f)
+    //    .setPivotX(Pivot.X.CENTER)
+    //    .setPivotY(Pivot.Y.BOTTOM)
+    //    .build());
     scrollView.setOnItemChangedListener(
         new DiscreteScrollView.OnItemChangedListener<RecyclerView.ViewHolder>() {
           @Override
