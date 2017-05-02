@@ -7,7 +7,7 @@
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true"
     android:gravity="bottom"
-    sothree:umanoPanelHeight="140dp"
+    sothree:umanoPanelHeight="96dp"
     sothree:umanoShadowHeight="4dp"
     >
 
