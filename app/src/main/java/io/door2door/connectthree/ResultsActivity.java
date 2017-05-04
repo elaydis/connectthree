@@ -1,5 +1,6 @@
 package io.door2door.connectthree;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +8,13 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.TextView;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -23,6 +30,9 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
 
   public static final String SUGGESTION_ADDRESS = "suggestion_address";
 
+  @BindView(R.id.destinationEditText)
+  EditText destinationEditText;
+
   private GoogleMap mMap;
   private ArrayList<LatLng> coordsStart = new ArrayList<>(
       Arrays.asList(new LatLng(52.5298727, 13.4028925), new LatLng(52.5200, 13.4050),
@@ -37,6 +47,22 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
       startRidingActivity();
     }
   };
+
+  private TextView.OnEditorActionListener editTextActionListener =
+      new TextView.OnEditorActionListener() {
+        @Override
+        public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+          boolean handled = false;
+          if (actionId == EditorInfo.IME_ACTION_GO) {
+            InputMethodManager imm =
+                (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+            destinationEditText.clearFocus();
+            handled = true;
+          }
+          return handled;
+        }
+      };
 
   private void startRidingActivity() {
     Intent intent = new Intent(this, RideActivity.class);
@@ -60,6 +86,9 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     this.setContentView(R.layout.activity_results);
+    ButterKnife.bind(this);
+
+    destinationEditText.setOnEditorActionListener(editTextActionListener);
 
     SupportMapFragment mapFragment =
         (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);

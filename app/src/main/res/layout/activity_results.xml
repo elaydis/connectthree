@@ -41,6 +41,8 @@
           android:layout_marginBottom="16dp"
           android:layout_marginTop="16dp"
           android:hint="@string/destination"
+          android:imeOptions="actionGo"
+          android:inputType="text"
           />
     </LinearLayout>
 

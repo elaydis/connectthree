@@ -61,6 +61,18 @@ public class PlannerActivity extends FragmentActivity implements OnMapReadyCallb
     }
   };
 
+  private TextView.OnEditorActionListener listener = new TextView.OnEditorActionListener() {
+    @Override
+    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+      boolean handled = false;
+      if (actionId == EditorInfo.IME_ACTION_GO) {
+        startResultsActivity(v.getText().toString());
+        handled = true;
+      }
+      return handled;
+    }
+  };
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -79,17 +91,7 @@ public class PlannerActivity extends FragmentActivity implements OnMapReadyCallb
         new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     historyList.setAdapter(new HistoryAdapter(clickListener));
     slidingUpPanelLayout.setScrollableView(historyList);
-    destinationEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-      @Override
-      public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-        boolean handled = false;
-        if (actionId == EditorInfo.IME_ACTION_GO) {
-          startResultsActivity(v.getText().toString());
-          handled = true;
-        }
-        return handled;
-      }
-    });
+    destinationEditText.setOnEditorActionListener(listener);
   }
 
   @Override
