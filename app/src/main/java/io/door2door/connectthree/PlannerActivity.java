@@ -75,6 +75,7 @@ public class PlannerActivity extends FragmentActivity implements OnMapReadyCallb
     historyList.setLayoutManager(
         new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     historyList.setAdapter(new HistoryAdapter(clickListener));
+    slidingUpPanelLayout.setScrollableView(historyList);
   }
 
   @Override
