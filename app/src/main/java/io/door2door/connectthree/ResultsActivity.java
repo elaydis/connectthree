@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -22,6 +23,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.yarolegovich.discretescrollview.DiscreteScrollView;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,6 +34,8 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
 
   @BindView(R.id.destinationEditText)
   EditText destinationEditText;
+  @BindView(R.id.slidingLayout)
+  SlidingUpPanelLayout slidingUpPanelLayout;
 
   private GoogleMap mMap;
   private ArrayList<LatLng> coordsStart = new ArrayList<>(
@@ -120,6 +124,21 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
 
     EditText editText = (EditText) findViewById(R.id.destinationEditText);
     editText.setText(getIntent().getExtras().getString(SUGGESTION_ADDRESS));
+
+    slidingUpPanelLayout.addPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
+      @Override
+      public void onPanelSlide(View panel, float slideOffset) {
+
+      }
+
+      @Override
+      public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState,
+          SlidingUpPanelLayout.PanelState newState) {
+
+        destinationEditText.setVisibility(
+            newState == SlidingUpPanelLayout.PanelState.EXPANDED ? View.GONE : View.VISIBLE);
+      }
+    });
   }
 
   @Override

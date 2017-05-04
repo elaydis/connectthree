@@ -1,67 +1,77 @@
-<com.sothree.slidinguppanel.SlidingUpPanelLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:sothree="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:descendantFocusability="beforeDescendants"
-    android:focusableInTouchMode="true"
-    android:gravity="bottom"
-    sothree:umanoPanelHeight="96dp"
-    sothree:umanoShadowHeight="4dp"
     >
 
 
-  <RelativeLayout
+  <fragment
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:id="@+id/map"
+      android:name="com.google.android.gms.maps.SupportMapFragment"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
+      tools:context="io.door2door.connectthree.PlannerActivity"
+      />
+
+  <com.sothree.slidinguppanel.SlidingUpPanelLayout
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:sothree="http://schemas.android.com/apk/res-auto"
+      android:id="@+id/slidingLayout"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:descendantFocusability="beforeDescendants"
+      android:focusableInTouchMode="true"
+      android:gravity="bottom"
+      sothree:umanoPanelHeight="96dp"
+      sothree:umanoShadowHeight="0dp"
+      sothree:umanoFadeColor="@android:color/transparent"
       >
 
-    <fragment
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="io.door2door.connectthree.PlannerActivity"
-        />
+        >
+
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentTop="true"
+          android:background="@color/primaryBackground"
+          android:paddingLeft="16dp"
+          android:paddingRight="16dp"
+          >
+        <EditText
+            android:id="@+id/destinationEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:hint="@string/destination"
+            android:imeOptions="actionGo"
+            android:inputType="text"
+            />
+      </LinearLayout>
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="@color/primaryBackground"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
         >
-      <EditText
-          android:id="@+id/destinationEditText"
+
+      <com.yarolegovich.discretescrollview.DiscreteScrollView
+          android:id="@+id/picker"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_marginBottom="16dp"
-          android:layout_marginTop="16dp"
-          android:hint="@string/destination"
-          android:imeOptions="actionGo"
-          android:inputType="text"
+          android:background="@android:color/transparent"
           />
+
     </LinearLayout>
-
-  </RelativeLayout>
-
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      android:padding="30dp"
-      >
-
-    <com.yarolegovich.discretescrollview.DiscreteScrollView
-        android:id="@+id/picker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#f3f4f5"
-        />
-
-  </LinearLayout>
-</com.sothree.slidinguppanel.SlidingUpPanelLayout>
+  </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+</RelativeLayout>
