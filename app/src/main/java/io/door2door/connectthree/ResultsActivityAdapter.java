@@ -47,29 +47,29 @@ class ResultsActivityAdapter extends RecyclerView.Adapter {
   public int getItemCount() {
     return 3;
   }
-}
 
-class ViewHolder extends RecyclerView.ViewHolder {
+  class ViewHolder extends RecyclerView.ViewHolder {
 
-  @BindView(R.id.textView)
-  TextView textView;
-  @BindView(R.id.textView2)
-  TextView textView2;
-  @BindView(R.id.textView3)
-  TextView textView3;
-  @BindView(R.id.textView4)
-  TextView textView4;
+    @BindView(R.id.textView)
+    TextView textView;
+    @BindView(R.id.textView2)
+    TextView textView2;
+    @BindView(R.id.textView3)
+    TextView textView3;
+    @BindView(R.id.textView4)
+    TextView textView4;
 
-  private BookButtonClickListener clickListener;
+    private BookButtonClickListener clickListener;
 
-  public ViewHolder(View itemView, BookButtonClickListener clickListener) {
-    super(itemView);
-    ButterKnife.bind(this, itemView);
-    this.clickListener = clickListener;
-  }
+    public ViewHolder(View itemView, BookButtonClickListener clickListener) {
+      super(itemView);
+      ButterKnife.bind(this, itemView);
+      this.clickListener = clickListener;
+    }
 
-  @OnClick(R.id.button)
-  public void onClick() {
-    clickListener.onBookButtonClick();
+    @OnClick(R.id.button)
+    public void onClick() {
+      clickListener.onBookButtonClick();
+    }
   }
 }
