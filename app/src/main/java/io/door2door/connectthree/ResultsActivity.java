@@ -1,6 +1,5 @@
 package io.door2door.connectthree;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,8 +22,6 @@ import java.util.Arrays;
 public class ResultsActivity extends FragmentActivity implements OnMapReadyCallback {
 
   public static final String SUGGESTION_ADDRESS = "suggestion_address";
-  private String suggestionAddress;
-  private Context context;
 
   private GoogleMap mMap;
   private ArrayList<LatLng> coordsStart = new ArrayList<>(
@@ -34,20 +31,26 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
       Arrays.asList(new LatLng(52.523297, 13.4200692), new LatLng(51.5074, 0.1278),
           new LatLng(52.523297, 13.4200692)));
 
+  private DialogInterface.OnClickListener bookListener = new DialogInterface.OnClickListener() {
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+      startRidingActivity();
+    }
+  };
+
+  private void startRidingActivity() {
+    Intent intent = new Intent(this, RideActivity.class);
+    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+    startActivity(intent);
+  }
+
   private BookButtonClickListener bookButtonClickListener = new BookButtonClickListener() {
     @Override
     public void onBookButtonClick() {
       AlertDialog alertDialog =
           new AlertDialog.Builder(ResultsActivity.this).setTitle("Pick number of seats")
               .setMessage("2 seats")
-              .setPositiveButton("BOOK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                  Intent intent = new Intent(context, RideActivity.class);
-                  intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                  startActivity(intent);
-                }
-              })
+              .setPositiveButton("BOOK", bookListener)
               .create();
       alertDialog.show();
     }
@@ -56,8 +59,6 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    context = this;
-
     this.setContentView(R.layout.activity_results);
 
     SupportMapFragment mapFragment =

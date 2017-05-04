@@ -1,13 +1,15 @@
 package io.door2door.connectthree;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -27,8 +29,6 @@ public class PlannerActivity extends FragmentActivity implements OnMapReadyCallb
   @BindView(R.id.historyList)
   RecyclerView historyList;
 
-  Context context;
-
   private View.OnClickListener onClickListener = new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -39,12 +39,17 @@ public class PlannerActivity extends FragmentActivity implements OnMapReadyCallb
     @Override
     public void onSuggestionClick(String suggestionAddress) {
       destinationEditText.setText(suggestionAddress);
-      Intent intent = new Intent(context, ResultsActivity.class);
-      intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-      intent.putExtra(ResultsActivity.SUGGESTION_ADDRESS, suggestionAddress);
-      startActivity(intent);
+      startResultsActivity(suggestionAddress);
     }
   };
+
+  private void startResultsActivity(String suggestionAddress) {
+    Intent intent = new Intent(this, ResultsActivity.class);
+    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+    intent.putExtra(ResultsActivity.SUGGESTION_ADDRESS, suggestionAddress);
+    startActivity(intent);
+  }
+
   private View.OnFocusChangeListener focusChangeListener = new View.OnFocusChangeListener() {
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
@@ -64,8 +69,6 @@ public class PlannerActivity extends FragmentActivity implements OnMapReadyCallb
     SupportMapFragment mapFragment =
         (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
     mapFragment.getMapAsync(this);
-
-    context = this;
     setUpViews();
   }
 
@@ -76,6 +79,17 @@ public class PlannerActivity extends FragmentActivity implements OnMapReadyCallb
         new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     historyList.setAdapter(new HistoryAdapter(clickListener));
     slidingUpPanelLayout.setScrollableView(historyList);
+    destinationEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+      @Override
+      public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+        boolean handled = false;
+        if (actionId == EditorInfo.IME_ACTION_GO) {
+          startResultsActivity(v.getText().toString());
+          handled = true;
+        }
+        return handled;
+      }
+    });
   }
 
   @Override

@@ -31,8 +31,12 @@
       </intent-filter>
     </activity>
 
-    <activity android:name=".ResultsActivity"/>
-    <activity android:name=".RideActivity"/>
+    <activity
+        android:name=".ResultsActivity"
+        android:parentActivityName=".PlannerActivity"/>
+    <activity
+        android:name=".RideActivity"
+        android:parentActivityName=".ResultsActivity"/>
   </application>
 
 </manifest>

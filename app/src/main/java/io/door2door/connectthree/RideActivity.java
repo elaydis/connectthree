@@ -39,8 +39,7 @@ public class RideActivity extends FragmentActivity implements OnMapReadyCallback
 
   @Override
   public void onBackPressed() {
-    slidingUpPanelLayout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
-    //super.onBackPressed();
+    super.onBackPressed();
   }
 
   @Override
