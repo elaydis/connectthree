@@ -1,46 +1,236 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="300dp"
-    android:layout_height="500dp"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
-    android:background="#ffffff"
+    android:layout_width="350dp"
+    android:layout_height="400dp"
+    android:layout_marginLeft="4dp"
+    android:layout_marginRight="4dp"
+    android:background="@drawable/card_background"
     android:orientation="vertical"
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp"
     >
 
-  <TextView
-      android:id="@+id/textView"
-      android:layout_width="wrap_content"
+  <RelativeLayout
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="One"
+      android:orientation="horizontal"
+      android:padding="4dp"
+      >
+
+    <LinearLayout
+        android:id="@+id/transportTypeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:orientation="vertical"
+        android:padding="8dp"
+        >
+      <TextView
+          android:id="@+id/transportTypeTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Public Transport"
+          android:textSize="22sp"
+          android:textStyle="bold"
+          />
+
+      <TextView
+          android:id="@+id/remainingTimeTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="leaves in 5 minutes"
+          android:textSize="16sp"
+          />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        >
+
+      <LinearLayout
+          android:id="@+id/priceLayout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="16dp"
+          android:layout_marginRight="16dp"
+          android:orientation="vertical"
+          android:paddingTop="8dp"
+          >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/priceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1,00€"
+            android:textSize="22sp"
+            />
+      </LinearLayout>
+
+      <View
+          android:id="@+id/divider"
+          android:layout_width="1dp"
+          android:layout_height="60dp"
+          android:layout_marginBottom="4dp"
+          android:layout_marginTop="4dp"
+          android:background="@color/lightgrey"
+          />
+
+      <LinearLayout
+          android:id="@+id/minuteLayout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="end"
+          android:layout_marginLeft="24dp"
+          android:layout_marginRight="24dp"
+          android:orientation="vertical"
+          android:paddingTop="8dp"
+          >
+
+        <TextView
+            android:id="@+id/travelDurationTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="22"
+            android:textSize="22sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="min"
+            android:textSize="16sp"
+            />
+
+      </LinearLayout>
+
+    </LinearLayout>
+
+
+  </RelativeLayout>
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:layout_marginBottom="16dp"
+      android:background="@color/lightgrey"
       />
 
-  <TextView
-      android:id="@+id/textView2"
-      android:layout_width="wrap_content"
+
+  <LinearLayout
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:text="Two"
-      />
+      android:layout_marginLeft="8dp"
+      android:layout_marginRight="16dp"
+      android:orientation="horizontal"
+      >
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:gravity="center_horizontal"
+        android:text="U8"
+        android:textSize="12sp"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:gravity="center_horizontal"
+        android:text="M5"
+        android:textSize="12sp"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        />
+
+  </LinearLayout>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="10dp"
+      android:layout_marginLeft="8dp"
+      android:layout_marginRight="16dp"
+      android:orientation="horizontal"
+      >
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:background="@color/colorPrimary"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorAccent"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:background="@color/colorPrimary"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/colorAccent"
+        />
+
+  </LinearLayout>
 
   <TextView
-      android:id="@+id/textView3"
+      android:layout_marginTop="24dp"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="Three"
-      />
-
-  <TextView
-      android:id="@+id/textView4"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Four"
+      android:text="detailed routing information here"
       />
 
   <Button
       android:id="@+id/button"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="8dp"
+      android:layout_marginTop="80dp"
       android:background="@color/colorPrimary"
       android:text="Book now"
       android:textColor="@color/primaryBackground"

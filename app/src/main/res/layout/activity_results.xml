@@ -24,7 +24,7 @@
       android:descendantFocusability="beforeDescendants"
       android:focusableInTouchMode="true"
       android:gravity="bottom"
-      sothree:umanoPanelHeight="96dp"
+      sothree:umanoPanelHeight="156dp"
       sothree:umanoShadowHeight="0dp"
       sothree:umanoFadeColor="@android:color/transparent"
       >

@@ -14,11 +14,8 @@ import java.util.Arrays;
 class ResultsActivityAdapter extends RecyclerView.Adapter {
   private ArrayList<String> transportTypes =
       new ArrayList<>(Arrays.asList("Public Transport", "Public Transport", "Ride-Share"));
-  private ArrayList<String> times =
-      new ArrayList<>(Arrays.asList("12:00 -> 13:00", "13:00 -> 15:00", "15:00 -> 18:00"));
-  private ArrayList<String> durations =
-      new ArrayList<>(Arrays.asList("1 hour", "2 hours", "3 hours"));
-  private ArrayList<String> prices = new ArrayList<>(Arrays.asList("100 €", "200 €", "300 €"));
+  private ArrayList<String> durations = new ArrayList<>(Arrays.asList("12", "22", "32"));
+  private ArrayList<String> prices = new ArrayList<>(Arrays.asList("1,00€", "2,00€", "3,00€"));
   private final BookButtonClickListener bookButtonClickListener;
 
   ResultsActivityAdapter(BookButtonClickListener bookButtonClickListener) {
@@ -37,7 +34,6 @@ class ResultsActivityAdapter extends RecyclerView.Adapter {
   public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
     ((ViewHolder) holder).textView.setText(
         transportTypes.toArray(new String[transportTypes.size()])[position]);
-    ((ViewHolder) holder).textView2.setText(times.toArray(new String[times.size()])[position]);
     ((ViewHolder) holder).textView3.setText(
         durations.toArray(new String[durations.size()])[position]);
     ((ViewHolder) holder).textView4.setText(prices.toArray(new String[prices.size()])[position]);
@@ -50,13 +46,11 @@ class ResultsActivityAdapter extends RecyclerView.Adapter {
 
   class ViewHolder extends RecyclerView.ViewHolder {
 
-    @BindView(R.id.textView)
+    @BindView(R.id.transportTypeTextView)
     TextView textView;
-    @BindView(R.id.textView2)
-    TextView textView2;
-    @BindView(R.id.textView3)
+    @BindView(R.id.travelDurationTextView)
     TextView textView3;
-    @BindView(R.id.textView4)
+    @BindView(R.id.priceTextView)
     TextView textView4;
 
     private BookButtonClickListener clickListener;
