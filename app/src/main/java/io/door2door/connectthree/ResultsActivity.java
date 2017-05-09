@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
@@ -14,6 +13,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -45,13 +45,6 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
       Arrays.asList(new LatLng(52.523297, 13.4200692), new LatLng(51.5074, 0.1278),
           new LatLng(52.523297, 13.4200692)));
 
-  private DialogInterface.OnClickListener bookListener = new DialogInterface.OnClickListener() {
-    @Override
-    public void onClick(DialogInterface dialog, int which) {
-      startRidingActivity();
-    }
-  };
-
   private TextView.OnEditorActionListener editTextActionListener =
       new TextView.OnEditorActionListener() {
         @Override
@@ -77,12 +70,7 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
   private BookButtonClickListener bookButtonClickListener = new BookButtonClickListener() {
     @Override
     public void onBookButtonClick() {
-      AlertDialog alertDialog =
-          new AlertDialog.Builder(ResultsActivity.this).setTitle("Pick number of seats")
-              .setMessage("2 seats")
-              .setPositiveButton("BOOK", bookListener)
-              .create();
-      alertDialog.show();
+      Toast.makeText(ResultsActivity.this, "Go to riding", Toast.LENGTH_SHORT).show();
     }
   };
 
