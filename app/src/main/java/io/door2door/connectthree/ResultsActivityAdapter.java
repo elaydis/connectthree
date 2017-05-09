@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -11,7 +12,7 @@ import butterknife.OnClick;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-class ResultsActivityAdapter extends RecyclerView.Adapter {
+class ResultsActivityAdapter extends RecyclerView.Adapter<ResultsActivityAdapter.ViewHolder> {
   private ArrayList<String> transportTypes =
       new ArrayList<>(Arrays.asList("Public Transport", "Public Transport", "Ride-Share"));
   private ArrayList<String> durations = new ArrayList<>(Arrays.asList("12", "22", "32"));
@@ -31,12 +32,19 @@ class ResultsActivityAdapter extends RecyclerView.Adapter {
   }
 
   @Override
-  public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-    ((ViewHolder) holder).textView.setText(
-        transportTypes.toArray(new String[transportTypes.size()])[position]);
-    ((ViewHolder) holder).textView3.setText(
-        durations.toArray(new String[durations.size()])[position]);
-    ((ViewHolder) holder).textView4.setText(prices.toArray(new String[prices.size()])[position]);
+  public void onBindViewHolder(ViewHolder holder, int position) {
+    if (position == 2) {
+      holder.rideSharingBookingLayout.setVisibility(View.VISIBLE);
+      holder.publicTransportDetailsLayout.setVisibility(View.GONE);
+      holder.rideSharingPriceLayout.setVisibility(View.VISIBLE);
+    } else {
+      holder.rideSharingBookingLayout.setVisibility(View.GONE);
+      holder.publicTransportDetailsLayout.setVisibility(View.VISIBLE);
+      holder.rideSharingPriceLayout.setVisibility(View.GONE);
+    }
+    holder.textView.setText(transportTypes.toArray(new String[transportTypes.size()])[position]);
+    holder.textView3.setText(durations.toArray(new String[durations.size()])[position]);
+    holder.textView4.setText(prices.toArray(new String[prices.size()])[position]);
   }
 
   @Override
@@ -52,6 +60,12 @@ class ResultsActivityAdapter extends RecyclerView.Adapter {
     TextView textView3;
     @BindView(R.id.priceTextView)
     TextView textView4;
+    @BindView(R.id.rideSharingBookingLayout)
+    LinearLayout rideSharingBookingLayout;
+    @BindView(R.id.publicTransportDetailsLayout)
+    LinearLayout publicTransportDetailsLayout;
+    @BindView(R.id.rideSharingPriceLayout)
+    LinearLayout rideSharingPriceLayout;
 
     private BookButtonClickListener clickListener;
 

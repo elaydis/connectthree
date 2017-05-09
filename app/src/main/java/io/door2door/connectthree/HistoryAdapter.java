@@ -8,10 +8,21 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
 
   private final SuggestionClickListener clickListener;
+
+  private ArrayList<String> suggestionTitles = new ArrayList<>(
+      Arrays.asList("door2door", "Alexanderplatz", "Rosenthaler Platz", "Tegel Airport",
+          "Alexanderplatz", "Rosenthaler Platz", "Tegel Airport", "Alexanderplatz",
+          "Rosenthaler Platz", "Tegel Airport"));
+  private ArrayList<String> suggestionAddresses = new ArrayList<>(
+      Arrays.asList("Torstraße 109", "Alexanderstraße 5", "Torstraße 101", "Flughafenstraße 1",
+          "Alexanderstraße 5", "Torstraße 101", "Flughafenstraße 1", "Alexanderstraße 5",
+          "Torstraße 101", "Flughafenstraße 1"));
 
   public HistoryAdapter(SuggestionClickListener clickListener) {
     this.clickListener = clickListener;
@@ -26,9 +37,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    holder.suggestionAddress = "Suggestion Address" + position;
-    holder.suggestionTitleTextView.setText("Suggestion Title" + position);
-    holder.suggestionAddressTextView.setText("Suggestion Address goes here");
+    holder.suggestionAddress = suggestionAddresses.get(position);
+    holder.suggestionTitleTextView.setText(suggestionTitles.get(position));
+    holder.suggestionAddressTextView.setText(suggestionAddresses.get(position));
   }
 
   @Override

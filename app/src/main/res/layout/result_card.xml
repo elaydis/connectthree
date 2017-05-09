@@ -51,13 +51,14 @@
         >
 
       <LinearLayout
-          android:id="@+id/priceLayout"
+          android:id="@+id/rideSharingPriceLayout"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginLeft="16dp"
           android:layout_marginRight="16dp"
           android:orientation="vertical"
           android:paddingTop="8dp"
+          android:visibility="visible"
           >
 
         <TextView
@@ -121,118 +122,241 @@
   <View
       android:layout_width="match_parent"
       android:layout_height="1dp"
-      android:layout_marginBottom="16dp"
+      android:layout_marginBottom="4dp"
       android:background="@color/lightgrey"
       />
 
-
   <LinearLayout
+      android:id="@+id/rideSharingBookingLayout"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginLeft="8dp"
-      android:layout_marginRight="16dp"
-      android:orientation="horizontal"
+      android:orientation="vertical"
+      android:paddingBottom="8dp"
+      android:paddingLeft="8dp"
+      android:paddingStart="8dp"
+      android:visibility="visible"
       >
 
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Select seats"
+        android:textSize="16sp"
         />
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:gravity="center_horizontal"
-        android:text="U8"
-        android:textSize="12sp"
-        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        />
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          >
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/button_background"
+            android:text="-"
+            style="?android:attr/borderlessButtonStyle"
+            />
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="4"
-        android:gravity="center_horizontal"
-        android:text="M5"
-        android:textSize="12sp"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="1"
+            />
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        />
+
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/button_background"
+            android:text="+"
+            style="?android:attr/borderlessButtonStyle"
+            />
+
+      </LinearLayout>
+
+      <Button
+          android:id="@+id/button"
+          android:layout_width="wrap_content"
+          android:layout_height="48dp"
+          android:layout_alignParentRight="true"
+          android:layout_marginRight="16dp"
+          android:background="@drawable/big_button_background"
+          android:text="Book now!"
+          android:textAllCaps="false"
+          android:textColor="#fff"
+          android:textStyle="bold"
+          style="?android:attr/borderlessButtonStyle"
+          />
+
+    </RelativeLayout>
 
   </LinearLayout>
 
   <LinearLayout
+      android:id="@+id/publicTransportDetailsLayout"
       android:layout_width="match_parent"
-      android:layout_height="10dp"
-      android:layout_marginLeft="8dp"
-      android:layout_marginRight="16dp"
-      android:orientation="horizontal"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="20dp"
+      android:orientation="vertical"
       >
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        android:background="@color/colorAccent"
-        android:gravity="center"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:orientation="horizontal"
+        >
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:background="@color/colorPrimary"
-        />
+      <TextView
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="2"
+          android:gravity="center"
+          />
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@color/colorAccent"
-        />
+      <TextView
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="3"
+          android:gravity="center_horizontal"
+          android:text="U8"
+          android:textSize="12sp"
+          />
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="4"
-        android:background="@color/colorPrimary"
-        />
+      <TextView
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          />
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:background="@color/colorAccent"
-        />
+      <TextView
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="4"
+          android:gravity="center_horizontal"
+          android:text="M5"
+          android:textSize="12sp"
+          />
 
+      <TextView
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:orientation="horizontal"
+        >
+
+      <TextView
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="2"
+          android:background="@color/colorAccent"
+          android:gravity="center"
+          />
+
+      <TextView
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="3"
+          android:background="@color/colorPrimary"
+          />
+
+      <TextView
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:background="@color/colorAccent"
+          />
+
+      <TextView
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="4"
+          android:background="@color/colorPrimary"
+          />
+
+      <TextView
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          android:background="@color/colorAccent"
+          />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        >
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/circle"
+            android:drawablePadding="4dp"
+            android:padding="4dp"
+            android:text="Rosenthaler Platz"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/square"
+            android:drawablePadding="4dp"
+            android:padding="4dp"
+            android:text="Tegel Airport"
+            />
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:id="@+id/publicTransportPriceLayout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
+          android:layout_marginLeft="16dp"
+          android:layout_marginRight="16dp"
+          android:orientation="vertical"
+          >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/publicTransportPriceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1,00€"
+            android:textSize="22sp"
+            />
+      </LinearLayout>
+    </RelativeLayout>
   </LinearLayout>
-
-  <TextView
-      android:layout_marginTop="24dp"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="detailed routing information here"
-      />
-
-  <Button
-      android:id="@+id/button"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="80dp"
-      android:background="@color/colorPrimary"
-      android:text="Book now"
-      android:textColor="@color/primaryBackground"
-      />
 </LinearLayout>
