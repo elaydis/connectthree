@@ -33,7 +33,7 @@ class ResultsActivityAdapter extends RecyclerView.Adapter<ResultsActivityAdapter
 
   @Override
   public void onBindViewHolder(ViewHolder holder, int position) {
-    if (position == 2) {
+    if (position == 0) {
       holder.rideSharingBookingLayout.setVisibility(View.VISIBLE);
       holder.publicTransportDetailsLayout.setVisibility(View.GONE);
       holder.rideSharingPriceLayout.setVisibility(View.VISIBLE);
