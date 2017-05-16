@@ -33,8 +33,12 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
 
   public static final String SUGGESTION_ADDRESS = "suggestion_address";
 
+  @BindView(R.id.originEditText)
+  EditText originEditText;
   @BindView(R.id.destinationEditText)
   EditText destinationEditText;
+  @BindView(R.id.timeEditText)
+  EditText timeEditText;
   @BindView(R.id.slidingLayout)
   SlidingUpPanelLayout slidingUpPanelLayout;
 
@@ -75,7 +79,51 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
     this.setContentView(R.layout.activity_results);
     ButterKnife.bind(this);
 
+    originEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+      @Override
+      public void onFocusChange(View v, boolean hasFocus) {
+        if (hasFocus) {
+          if (originEditText.getText().toString().equals("Current Location")) {
+            originEditText.setText("Alexanderplatz");
+          } else {
+            originEditText.setText("Current Location");
+          }
+        }
+      }
+    });
+    originEditText.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        if (originEditText.getText().toString().equals("Current Location")) {
+          originEditText.setText("Alexanderplatz");
+        } else {
+          originEditText.setText("Current Location");
+        }
+      }
+    });
     destinationEditText.setOnEditorActionListener(editTextActionListener);
+    timeEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+      @Override
+      public void onFocusChange(View v, boolean hasFocus) {
+        if (hasFocus) {
+          if (timeEditText.getText().toString().equals("Now")) {
+            timeEditText.setText("8:00 pm");
+          } else {
+            timeEditText.setText("Now");
+          }
+        }
+      }
+    });
+    timeEditText.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        if (timeEditText.getText().toString().equals("Now")) {
+          timeEditText.setText("8:00 pm");
+        } else {
+          timeEditText.setText("Now");
+        }
+      }
+    });
 
     SupportMapFragment mapFragment =
         (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -173,6 +221,9 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
 
     EditText editText = (EditText) findViewById(R.id.destinationEditText);
     editText.setText(getIntent().getExtras().getString(SUGGESTION_ADDRESS));
+
+    originEditText.setKeyListener(null);
+    timeEditText.setKeyListener(null);
 
     slidingUpPanelLayout.addPanelSlideListener(new SlidingUpPanelLayout.PanelSlideListener() {
       @Override

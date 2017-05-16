@@ -24,9 +24,9 @@
       android:descendantFocusability="beforeDescendants"
       android:focusableInTouchMode="true"
       android:gravity="bottom"
+      sothree:umanoFadeColor="@android:color/transparent"
       sothree:umanoPanelHeight="164dp"
       sothree:umanoShadowHeight="0dp"
-      sothree:umanoFadeColor="@android:color/transparent"
       >
 
 
@@ -41,9 +41,21 @@
           android:layout_height="wrap_content"
           android:layout_alignParentTop="true"
           android:background="@color/primaryBackground"
+          android:orientation="vertical"
           android:paddingLeft="16dp"
           android:paddingRight="16dp"
           >
+        <EditText
+            android:id="@+id/originEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Current Location"
+            android:imeOptions="actionGo"
+            android:inputType="none"
+            />
+
         <EditText
             android:id="@+id/destinationEditText"
             android:layout_width="match_parent"
@@ -53,6 +65,17 @@
             android:hint="@string/destination"
             android:imeOptions="actionGo"
             android:inputType="text"
+            />
+
+        <EditText
+            android:id="@+id/timeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Now"
+            android:imeOptions="actionGo"
+            android:inputType="none"
             />
       </LinearLayout>
 
