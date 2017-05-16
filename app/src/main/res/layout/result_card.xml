@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="350dp"
-    android:layout_height="400dp"
+    android:layout_height="600dp"
     android:layout_marginLeft="4dp"
     android:layout_marginRight="4dp"
     android:background="@drawable/card_background"
@@ -199,164 +199,76 @@
 
   </LinearLayout>
 
-  <LinearLayout
-      android:id="@+id/publicTransportDetailsLayout"
+  <ImageView
+      android:id="@+id/publicTransportSummaryImageView"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="20dp"
-      android:orientation="vertical"
+      />
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="24dp"
       >
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="16dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         >
 
       <TextView
-          android:layout_width="0dp"
-          android:layout_height="match_parent"
-          android:layout_weight="2"
-          android:gravity="center"
+          android:id="@+id/startTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:drawableLeft="@drawable/circle"
+          android:drawablePadding="4dp"
+          android:padding="4dp"
+          android:text="Rosenthaler Platz"
           />
 
       <TextView
-          android:layout_width="0dp"
-          android:layout_height="match_parent"
-          android:layout_weight="3"
-          android:gravity="center_horizontal"
-          android:text="U8"
-          android:textSize="12sp"
-          />
-
-      <TextView
-          android:layout_width="0dp"
-          android:layout_height="match_parent"
-          android:layout_weight="1"
-          />
-
-      <TextView
-          android:layout_width="0dp"
-          android:layout_height="match_parent"
-          android:layout_weight="4"
-          android:gravity="center_horizontal"
-          android:text="M5"
-          android:textSize="12sp"
-          />
-
-      <TextView
-          android:layout_width="0dp"
-          android:layout_height="match_parent"
-          android:layout_weight="1"
+          android:id="@+id/endTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:drawableLeft="@drawable/square"
+          android:drawablePadding="4dp"
+          android:padding="4dp"
+          android:text="Hackescher Markt"
           />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="16dp"
-        android:orientation="horizontal"
-        >
-
-      <TextView
-          android:layout_width="0dp"
-          android:layout_height="match_parent"
-          android:layout_weight="2"
-          android:background="@color/colorAccent"
-          android:gravity="center"
-          />
-
-      <TextView
-          android:layout_width="0dp"
-          android:layout_height="match_parent"
-          android:layout_weight="3"
-          android:background="@color/colorPrimary"
-          />
-
-      <TextView
-          android:layout_width="0dp"
-          android:layout_height="match_parent"
-          android:layout_weight="1"
-          android:background="@color/colorAccent"
-          />
-
-      <TextView
-          android:layout_width="0dp"
-          android:layout_height="match_parent"
-          android:layout_weight="4"
-          android:background="@color/colorPrimary"
-          />
-
-      <TextView
-          android:layout_width="0dp"
-          android:layout_height="match_parent"
-          android:layout_weight="1"
-          android:background="@color/colorAccent"
-          />
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
+        android:id="@+id/publicTransportPriceLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical"
         >
 
-      <LinearLayout
+      <TextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:orientation="vertical"
-          >
+          android:text="Total"
+          android:textSize="16sp"
+          />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/circle"
-            android:drawablePadding="4dp"
-            android:padding="4dp"
-            android:text="Rosenthaler Platz"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableLeft="@drawable/square"
-            android:drawablePadding="4dp"
-            android:padding="4dp"
-            android:text="Hackescher Markt"
-            />
-
-      </LinearLayout>
-
-      <LinearLayout
-          android:id="@+id/publicTransportPriceLayout"
+      <TextView
+          android:id="@+id/publicTransportPriceTextView"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_alignParentRight="true"
-          android:layout_marginLeft="16dp"
-          android:layout_marginRight="16dp"
-          android:orientation="vertical"
-          >
+          android:text="1,00€"
+          android:textSize="22sp"
+          />
+    </LinearLayout>
+  </RelativeLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Total"
-            android:textSize="16sp"
-            />
-
-        <TextView
-            android:id="@+id/publicTransportPriceTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="1,00€"
-            android:textSize="22sp"
-            />
-      </LinearLayout>
-    </RelativeLayout>
-  </LinearLayout>
+  <ImageView
+      android:id="@+id/publicTransportDetailsImageView"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      />
 </LinearLayout>

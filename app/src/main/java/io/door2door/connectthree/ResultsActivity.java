@@ -38,12 +38,6 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
   SlidingUpPanelLayout slidingUpPanelLayout;
 
   private GoogleMap mMap;
-  private ArrayList<LatLng> coordsStart = new ArrayList<>(
-      Arrays.asList(new LatLng(52.5298727, 13.4028925), new LatLng(52.5200, 13.4050),
-          new LatLng(52.5298727, 13.4028925)));
-  private ArrayList<LatLng> coordsEnd = new ArrayList<>(
-      Arrays.asList(new LatLng(52.523297, 13.4200692), new LatLng(51.5074, 0.1278),
-          new LatLng(52.523297, 13.4200692)));
 
   private TextView.OnEditorActionListener editTextActionListener =
       new TextView.OnEditorActionListener() {
@@ -102,10 +96,65 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
             if (mMap != null) {
               mMap.clear();
 
-              PolylineOptions options = new PolylineOptions();
-              options.add(coordsStart.toArray(new LatLng[coordsStart.size()])[adapterPosition]);
-              options.add(coordsEnd.toArray(new LatLng[coordsEnd.size()])[adapterPosition]);
-              mMap.addPolyline(options);
+              if (adapterPosition == 0) {
+                PolylineOptions options = new PolylineOptions();
+                options.add(new LatLng(52.5298727, 13.4028925));
+                options.add(new LatLng(52.5096, 13.3759));
+                mMap.addPolyline(options);
+              }
+
+              if (adapterPosition == 1) {
+                PolylineOptions options = new PolylineOptions();
+                options.add(new LatLng(52.5298727, 13.4028925));
+                options.add(new LatLng(52.5297, 13.4014));
+                mMap.addPolyline(options);
+                PolylineOptions options2 = new PolylineOptions();
+                options2.add(new LatLng(52.5297, 13.4014));
+                options2.add(new LatLng(52.5250, 13.3922));
+                mMap.addPolyline(options2);
+                PolylineOptions options3 = new PolylineOptions();
+                options3.add(new LatLng(52.5250, 13.3922));
+                options3.add(new LatLng(52.5087, 13.3762));
+                mMap.addPolyline(options3);
+                PolylineOptions options4 = new PolylineOptions();
+                options4.add(new LatLng(52.5087, 13.3762));
+                options4.add(new LatLng(52.5096, 13.3759));
+                mMap.addPolyline(options4);
+              }
+
+              if (adapterPosition == 2) {
+                PolylineOptions options = new PolylineOptions();
+                options.add(new LatLng(52.5298727, 13.4028925));
+                options.add(new LatLng(52.5297, 13.4014));
+                mMap.addPolyline(options);
+                PolylineOptions options2 = new PolylineOptions();
+                options2.add(new LatLng(52.5297, 13.4014));
+                options2.add(new LatLng(52.5319, 13.3884));
+                mMap.addPolyline(options2);
+                PolylineOptions options3 = new PolylineOptions();
+                options3.add(new LatLng(52.5319, 13.3884));
+                options3.add(new LatLng(52.5087, 13.3762));
+                mMap.addPolyline(options3);
+                PolylineOptions options4 = new PolylineOptions();
+                options4.add(new LatLng(52.5087, 13.3762));
+                options4.add(new LatLng(52.5096, 13.3759));
+                mMap.addPolyline(options4);
+              }
+
+              if (adapterPosition == 3) {
+                PolylineOptions options = new PolylineOptions();
+                options.add(new LatLng(52.5298727, 13.4028925));
+                options.add(new LatLng(52.5280, 13.4103));
+                mMap.addPolyline(options);
+                PolylineOptions options2 = new PolylineOptions();
+                options2.add(new LatLng(52.5280, 13.4103));
+                options2.add(new LatLng(52.5087, 13.3762));
+                mMap.addPolyline(options2);
+                PolylineOptions options3 = new PolylineOptions();
+                options3.add(new LatLng(52.5087, 13.3762));
+                options3.add(new LatLng(52.5096, 13.3759));
+                mMap.addPolyline(options3);
+              }
             }
           }
         });
@@ -133,8 +182,13 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
   public void onMapReady(GoogleMap googleMap) {
     mMap = googleMap;
 
-    LatLng door2door = new LatLng(52.5298727, 13.4028925);
-    mMap.addMarker(new MarkerOptions().position(door2door).title("door2door HQ"));
-    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(door2door, 15));
+    //LatLng door2door = new LatLng(52.5298727, 13.4028925);
+    //mMap.addMarker(new MarkerOptions().position(door2door).title("door2door HQ"));
+    //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(door2door, 15));
+    PolylineOptions options = new PolylineOptions();
+    options.add(new LatLng(52.5298727, 13.4028925));
+    options.add(new LatLng(52.5096, 13.3759));
+    mMap.addPolyline(options);
+    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(52.5197371, 13.3893931), 13));
   }
 }
