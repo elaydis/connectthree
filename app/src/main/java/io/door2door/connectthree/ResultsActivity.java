@@ -3,6 +3,7 @@ package io.door2door.connectthree;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
@@ -96,29 +97,33 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
             if (mMap != null) {
               mMap.clear();
 
-              if (adapterPosition == 0) {
-                PolylineOptions options = new PolylineOptions();
-                options.add(new LatLng(52.5298727, 13.4028925));
-                options.add(new LatLng(52.5096, 13.3759));
-                mMap.addPolyline(options);
-              }
+              //if (adapterPosition == 0) {
+              //  PolylineOptions options = new PolylineOptions();
+              //  options.add(new LatLng(52.5298727, 13.4028925));
+              //  options.add(new LatLng(52.5096, 13.3759));
+              //  mMap.addPolyline(options);
+              //}
 
               if (adapterPosition == 1) {
                 PolylineOptions options = new PolylineOptions();
                 options.add(new LatLng(52.5298727, 13.4028925));
                 options.add(new LatLng(52.5297, 13.4014));
+                options.color(Color.parseColor("#D3D3D3"));
                 mMap.addPolyline(options);
                 PolylineOptions options2 = new PolylineOptions();
                 options2.add(new LatLng(52.5297, 13.4014));
                 options2.add(new LatLng(52.5250, 13.3922));
+                options2.color(Color.parseColor("#E8475A"));
                 mMap.addPolyline(options2);
                 PolylineOptions options3 = new PolylineOptions();
                 options3.add(new LatLng(52.5250, 13.3922));
                 options3.add(new LatLng(52.5087, 13.3762));
+                options3.color(Color.parseColor("#93C75A"));
                 mMap.addPolyline(options3);
                 PolylineOptions options4 = new PolylineOptions();
                 options4.add(new LatLng(52.5087, 13.3762));
                 options4.add(new LatLng(52.5096, 13.3759));
+                options4.color(Color.parseColor("#D3D3D3"));
                 mMap.addPolyline(options4);
               }
 
@@ -126,18 +131,22 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
                 PolylineOptions options = new PolylineOptions();
                 options.add(new LatLng(52.5298727, 13.4028925));
                 options.add(new LatLng(52.5297, 13.4014));
+                options.color(Color.parseColor("#D3D3D3"));
                 mMap.addPolyline(options);
                 PolylineOptions options2 = new PolylineOptions();
                 options2.add(new LatLng(52.5297, 13.4014));
                 options2.add(new LatLng(52.5319, 13.3884));
+                options2.color(Color.parseColor("#E8475A"));
                 mMap.addPolyline(options2);
                 PolylineOptions options3 = new PolylineOptions();
                 options3.add(new LatLng(52.5319, 13.3884));
                 options3.add(new LatLng(52.5087, 13.3762));
+                options3.color(Color.parseColor("#93C75A"));
                 mMap.addPolyline(options3);
                 PolylineOptions options4 = new PolylineOptions();
                 options4.add(new LatLng(52.5087, 13.3762));
                 options4.add(new LatLng(52.5096, 13.3759));
+                options4.color(Color.parseColor("#D3D3D3"));
                 mMap.addPolyline(options4);
               }
 
@@ -145,14 +154,17 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
                 PolylineOptions options = new PolylineOptions();
                 options.add(new LatLng(52.5298727, 13.4028925));
                 options.add(new LatLng(52.5280, 13.4103));
+                options.color(Color.parseColor("#D3D3D3"));
                 mMap.addPolyline(options);
                 PolylineOptions options2 = new PolylineOptions();
                 options2.add(new LatLng(52.5280, 13.4103));
                 options2.add(new LatLng(52.5087, 13.3762));
+                options2.color(Color.parseColor("#4A90E2"));
                 mMap.addPolyline(options2);
                 PolylineOptions options3 = new PolylineOptions();
                 options3.add(new LatLng(52.5087, 13.3762));
                 options3.add(new LatLng(52.5096, 13.3759));
+                options3.color(Color.parseColor("#D3D3D3"));
                 mMap.addPolyline(options3);
               }
             }
@@ -185,10 +197,10 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
     //LatLng door2door = new LatLng(52.5298727, 13.4028925);
     //mMap.addMarker(new MarkerOptions().position(door2door).title("door2door HQ"));
     //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(door2door, 15));
-    PolylineOptions options = new PolylineOptions();
-    options.add(new LatLng(52.5298727, 13.4028925));
-    options.add(new LatLng(52.5096, 13.3759));
-    mMap.addPolyline(options);
+    //PolylineOptions options = new PolylineOptions();
+    //options.add(new LatLng(52.5298727, 13.4028925));
+    //options.add(new LatLng(52.5096, 13.3759));
+    //mMap.addPolyline(options);
     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(52.5197371, 13.3893931), 13));
   }
 }

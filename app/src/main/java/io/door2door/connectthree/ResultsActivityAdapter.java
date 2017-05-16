@@ -51,10 +51,12 @@ class ResultsActivityAdapter extends RecyclerView.Adapter<ResultsActivityAdapter
       holder.rideSharingBookingLayout.setVisibility(View.VISIBLE);
       holder.publicTransportSummaryImageView.setVisibility(View.GONE);
       holder.rideSharingPriceLayout.setVisibility(View.VISIBLE);
+      holder.publicTransportDetailsImageView.setVisibility(View.GONE);
     } else {
       holder.rideSharingBookingLayout.setVisibility(View.GONE);
       holder.publicTransportSummaryImageView.setVisibility(View.VISIBLE);
       holder.rideSharingPriceLayout.setVisibility(View.GONE);
+      holder.publicTransportDetailsImageView.setVisibility(View.VISIBLE);
     }
     holder.transportTypeTextView.setText(
         transportTypes.toArray(new String[transportTypes.size()])[position]);
