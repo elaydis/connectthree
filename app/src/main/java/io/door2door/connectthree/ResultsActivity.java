@@ -79,64 +79,13 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
     this.setContentView(R.layout.activity_results);
     ButterKnife.bind(this);
 
-    originEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-      @Override
-      public void onFocusChange(View v, boolean hasFocus) {
-        if (hasFocus) {
-          if (originEditText.getText().toString().equals("Current Location")) {
-            originEditText.setText("Alexanderplatz");
-          } else {
-            originEditText.setText("Current Location");
-          }
-        }
-      }
-    });
-    originEditText.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        if (originEditText.getText().toString().equals("Current Location")) {
-          originEditText.setText("Alexanderplatz");
-        } else {
-          originEditText.setText("Current Location");
-        }
-      }
-    });
-    destinationEditText.setOnEditorActionListener(editTextActionListener);
-    timeEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-      @Override
-      public void onFocusChange(View v, boolean hasFocus) {
-        if (hasFocus) {
-          if (timeEditText.getText().toString().equals("Now")) {
-            timeEditText.setText("8:00 pm");
-          } else {
-            timeEditText.setText("Now");
-          }
-        }
-      }
-    });
-    timeEditText.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        if (timeEditText.getText().toString().equals("Now")) {
-          timeEditText.setText("8:00 pm");
-        } else {
-          timeEditText.setText("Now");
-        }
-      }
-    });
-
     SupportMapFragment mapFragment =
         (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
     mapFragment.getMapAsync(this);
 
-    DiscreteScrollView scrollView = (DiscreteScrollView) findViewById(R.id.picker);
+    final DiscreteScrollView scrollView = (DiscreteScrollView) findViewById(R.id.picker);
     scrollView.setAdapter(new ResultsActivityAdapter(bookButtonClickListener));
     scrollView.setOffscreenItems(1);
-    //scrollView.setItemTransformer(new ScaleTransformer.Builder().setMaxScale(1.05f)
-    //    .setMinScale(0.8f)
-    //    .setPivotX(Pivot.X.CENTER)
-    //    .setPivotY(Pivot.Y.BOTTOM)
-    //    .build());
     scrollView.setOnItemChangedListener(
         new DiscreteScrollView.OnItemChangedListener<RecyclerView.ViewHolder>() {
           @Override
@@ -145,12 +94,10 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
             if (mMap != null) {
               mMap.clear();
 
-              //if (adapterPosition == 0) {
-              //  PolylineOptions options = new PolylineOptions();
-              //  options.add(new LatLng(52.5298727, 13.4028925));
-              //  options.add(new LatLng(52.5096, 13.3759));
-              //  mMap.addPolyline(options);
-              //}
+              if (adapterPosition == 0) {
+                mMap.addMarker(new MarkerOptions().position(new LatLng(52.5298727, 13.4028925)));
+                mMap.addMarker(new MarkerOptions().position(new LatLng(52.5096, 13.3759)));
+              }
 
               if (adapterPosition == 1) {
                 PolylineOptions options = new PolylineOptions();
@@ -219,6 +166,60 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
           }
         });
 
+    originEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+      @Override
+      public void onFocusChange(View v, boolean hasFocus) {
+        if (hasFocus) {
+          if (originEditText.getText().toString().equals("Current Location")) {
+            originEditText.setText("Alexanderplatz");
+          } else {
+            originEditText.setText("Current Location");
+          }
+
+          scrollView.scrollToPosition(0);
+        }
+      }
+    });
+    originEditText.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        if (originEditText.getText().toString().equals("Current Location")) {
+          originEditText.setText("Alexanderplatz");
+        } else {
+          originEditText.setText("Current Location");
+        }
+
+        scrollView.scrollToPosition(0);
+      }
+    });
+    destinationEditText.setOnEditorActionListener(editTextActionListener);
+    timeEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+      @Override
+      public void onFocusChange(View v, boolean hasFocus) {
+        if (hasFocus) {
+          if (timeEditText.getText().toString().equals("Now")) {
+            timeEditText.setText("8:00 pm");
+          } else {
+            timeEditText.setText("Now");
+          }
+
+          scrollView.scrollToPosition(0);
+        }
+      }
+    });
+    timeEditText.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        if (timeEditText.getText().toString().equals("Now")) {
+          timeEditText.setText("8:00 pm");
+        } else {
+          timeEditText.setText("Now");
+        }
+
+        scrollView.scrollToPosition(0);
+      }
+    });
+
     EditText editText = (EditText) findViewById(R.id.destinationEditText);
     editText.setText(getIntent().getExtras().getString(SUGGESTION_ADDRESS));
 
@@ -245,13 +246,8 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
   public void onMapReady(GoogleMap googleMap) {
     mMap = googleMap;
 
-    //LatLng door2door = new LatLng(52.5298727, 13.4028925);
-    //mMap.addMarker(new MarkerOptions().position(door2door).title("door2door HQ"));
-    //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(door2door, 15));
-    //PolylineOptions options = new PolylineOptions();
-    //options.add(new LatLng(52.5298727, 13.4028925));
-    //options.add(new LatLng(52.5096, 13.3759));
-    //mMap.addPolyline(options);
+    mMap.addMarker(new MarkerOptions().position(new LatLng(52.5298727, 13.4028925)));
+    mMap.addMarker(new MarkerOptions().position(new LatLng(52.5096, 13.3759)));
     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(52.5197371, 13.3893931), 13));
   }
 }
