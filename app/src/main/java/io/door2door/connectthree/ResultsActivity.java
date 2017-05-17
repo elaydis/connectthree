@@ -93,11 +93,8 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
               int adapterPosition) {
             if (mMap != null) {
               mMap.clear();
-
-              if (adapterPosition == 0) {
-                mMap.addMarker(new MarkerOptions().position(new LatLng(52.5298727, 13.4028925)));
-                mMap.addMarker(new MarkerOptions().position(new LatLng(52.5096, 13.3759)));
-              }
+              mMap.addMarker(new MarkerOptions().position(new LatLng(52.5298727, 13.4028925)));
+              mMap.addMarker(new MarkerOptions().position(new LatLng(52.5096, 13.3759)));
 
               if (adapterPosition == 1) {
                 PolylineOptions options = new PolylineOptions();
@@ -177,6 +174,10 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
           }
 
           scrollView.scrollToPosition(0);
+
+          mMap.clear();
+          mMap.addMarker(new MarkerOptions().position(new LatLng(52.5298727, 13.4028925)));
+          mMap.addMarker(new MarkerOptions().position(new LatLng(52.5096, 13.3759)));
         }
       }
     });
@@ -190,6 +191,10 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
         }
 
         scrollView.scrollToPosition(0);
+
+        mMap.clear();
+        mMap.addMarker(new MarkerOptions().position(new LatLng(52.5298727, 13.4028925)));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(52.5096, 13.3759)));
       }
     });
     destinationEditText.setOnEditorActionListener(editTextActionListener);
@@ -204,6 +209,10 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
           }
 
           scrollView.scrollToPosition(0);
+
+          mMap.clear();
+          mMap.addMarker(new MarkerOptions().position(new LatLng(52.5298727, 13.4028925)));
+          mMap.addMarker(new MarkerOptions().position(new LatLng(52.5096, 13.3759)));
         }
       }
     });
@@ -217,6 +226,10 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
         }
 
         scrollView.scrollToPosition(0);
+
+        mMap.clear();
+        mMap.addMarker(new MarkerOptions().position(new LatLng(52.5298727, 13.4028925)));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(52.5096, 13.3759)));
       }
     });
 
