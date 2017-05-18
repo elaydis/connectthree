@@ -16,13 +16,13 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
   private final SuggestionClickListener clickListener;
 
   private ArrayList<String> suggestionTitles = new ArrayList<>(
-      Arrays.asList("door2door", "Alexanderplatz", "Rosenthaler Platz", "Tegel Airport",
-          "Alexanderplatz", "Rosenthaler Platz", "Tegel Airport", "Alexanderplatz",
+      Arrays.asList("Potsdamer Platz", "door2door", "Alexanderplatz", "Rosenthaler Platz",
+          "Tegel Airport", "Alexanderplatz", "Rosenthaler Platz", "Tegel Airport", "Alexanderplatz",
           "Rosenthaler Platz", "Tegel Airport"));
   private ArrayList<String> suggestionAddresses = new ArrayList<>(
-      Arrays.asList("Torstraße 109", "Alexanderstraße 5", "Torstraße 101", "Flughafenstraße 1",
-          "Alexanderstraße 5", "Torstraße 101", "Flughafenstraße 1", "Alexanderstraße 5",
-          "Torstraße 101", "Flughafenstraße 1"));
+      Arrays.asList("Potsdamer Platz", "Torstraße 109", "Alexanderstraße 5", "Torstraße 101",
+          "Flughafenstraße 1", "Alexanderstraße 5", "Torstraße 101", "Flughafenstraße 1",
+          "Alexanderstraße 5", "Torstraße 101", "Flughafenstraße 1"));
 
   public HistoryAdapter(SuggestionClickListener clickListener) {
     this.clickListener = clickListener;
@@ -44,7 +44,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
   @Override
   public int getItemCount() {
-    return 10;
+    return 11;
   }
 
   static class ViewHolder extends RecyclerView.ViewHolder {

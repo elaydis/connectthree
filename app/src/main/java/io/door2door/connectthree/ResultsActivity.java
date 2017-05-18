@@ -96,7 +96,7 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
               mMap.addMarker(new MarkerOptions().position(new LatLng(52.5298727, 13.4028925)));
               mMap.addMarker(new MarkerOptions().position(new LatLng(52.5096, 13.3759)));
 
-              if (adapterPosition == 1) {
+              if (adapterPosition == 2) {
                 PolylineOptions options = new PolylineOptions();
                 options.add(new LatLng(52.5298727, 13.4028925));
                 options.add(new LatLng(52.5297, 13.4014));
@@ -119,7 +119,7 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
                 mMap.addPolyline(options4);
               }
 
-              if (adapterPosition == 2) {
+              if (adapterPosition == 3) {
                 PolylineOptions options = new PolylineOptions();
                 options.add(new LatLng(52.5298727, 13.4028925));
                 options.add(new LatLng(52.5297, 13.4014));
@@ -142,7 +142,7 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
                 mMap.addPolyline(options4);
               }
 
-              if (adapterPosition == 3) {
+              if (adapterPosition == 4) {
                 PolylineOptions options = new PolylineOptions();
                 options.add(new LatLng(52.5298727, 13.4028925));
                 options.add(new LatLng(52.5280, 13.4103));
@@ -167,34 +167,42 @@ public class ResultsActivity extends FragmentActivity implements OnMapReadyCallb
       @Override
       public void onFocusChange(View v, boolean hasFocus) {
         if (hasFocus) {
+          mMap.clear();
+
           if (originEditText.getText().toString().equals("Current Location")) {
             originEditText.setText("Alexanderplatz");
+
+            mMap.addMarker(new MarkerOptions().position(new LatLng(52.5219, 13.4132)));
+            mMap.addMarker(new MarkerOptions().position(new LatLng(52.5096, 13.3759)));
           } else {
             originEditText.setText("Current Location");
+
+            mMap.addMarker(new MarkerOptions().position(new LatLng(52.5298727, 13.4028925)));
+            mMap.addMarker(new MarkerOptions().position(new LatLng(52.5096, 13.3759)));
           }
 
           scrollView.scrollToPosition(0);
-
-          mMap.clear();
-          mMap.addMarker(new MarkerOptions().position(new LatLng(52.5298727, 13.4028925)));
-          mMap.addMarker(new MarkerOptions().position(new LatLng(52.5096, 13.3759)));
         }
       }
     });
     originEditText.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
+        mMap.clear();
+
         if (originEditText.getText().toString().equals("Current Location")) {
           originEditText.setText("Alexanderplatz");
+
+          mMap.addMarker(new MarkerOptions().position(new LatLng(52.5219, 13.4132)));
+          mMap.addMarker(new MarkerOptions().position(new LatLng(52.5096, 13.3759)));
         } else {
           originEditText.setText("Current Location");
+
+          mMap.addMarker(new MarkerOptions().position(new LatLng(52.5298727, 13.4028925)));
+          mMap.addMarker(new MarkerOptions().position(new LatLng(52.5096, 13.3759)));
         }
 
         scrollView.scrollToPosition(0);
-
-        mMap.clear();
-        mMap.addMarker(new MarkerOptions().position(new LatLng(52.5298727, 13.4028925)));
-        mMap.addMarker(new MarkerOptions().position(new LatLng(52.5096, 13.3759)));
       }
     });
     destinationEditText.setOnEditorActionListener(editTextActionListener);
